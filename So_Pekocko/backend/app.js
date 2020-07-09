@@ -5,6 +5,7 @@ const path = require("path");
 
 const userRoutes = require("./routes/user");
 const sauceRoutes = require("./routes/sauce");
+const likesRoutes = require("./routes/likes");
 
 mongoose.connect('mongodb+srv://Katie:SpicyChillis@cluster0.1uh07.mongodb.net/<dbname>?retryWrites=true&w=majority',
   { useNewUrlParser: true,
@@ -27,5 +28,6 @@ app.use("/images", express.static(path.join(__dirname, "images")));
 
 app.use("/api/auth", userRoutes);
 app.use("/api/sauces", sauceRoutes);
+app.use("/api/sauces", likesRoutes);
 
 module.exports = app;
