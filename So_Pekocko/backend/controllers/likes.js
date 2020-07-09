@@ -1,27 +1,39 @@
 const Likes = require("../models/likes");
 const Sauce = require("../models/sauces");
-const users = require("../models/users");
-const { json } = require("body-parser");
-
-
-
 
 exports.likeSauce = (req, res, next) => {
    Sauce.findOne({_id: req.params.id})
         .then(sauce => {
             console.log(sauce.name)
-            const array = sauce.usersLiked;
+            const likeArray = sauce.usersLiked;
+            const dislikeArray = sauce.usersDisliked;
             if(req.body.like == 1){
-                array.push(req.body.userId)
-            } else {
-                array.pop(req.body.userId)
+                likeArray.push(req.body.userId);
+            } if(req.body.like == -1) {
+                dislikeArray.push(req.body.userId);
+            } if(req.body.like == 0) {
+                for (let i = 0; i < likeArray.length; i++){
+                    if(likeArray[i] === req.body.userId){
+                        likeArray.splice(i,1)
+                    }
+                };
+                for (let i = 0; i < dislikeArray.length; i++){
+                    if(dislikeArray[i] === req.body.userId){
+                        dislikeArray.splice(i,1)
+                    }
+                }
             };
-            const nbLikes = array.length;
-            console.log(array); 
-            console.log(nbLikes); 
+            const nbLikes = likeArray.length;
+            const nbDislikes = dislikeArray.length;
+            console.log(likeArray); 
+            console.log("number of likes; ", nbLikes); 
+            console.log(dislikeArray); 
+            console.log("number of dislikes; ", nbDislikes);
             Sauce.updateOne({_id: req.params.id}, {
-                usersLiked: array,
+                usersLiked: likeArray,
                 likes: nbLikes,
+                usersDisliked: dislikeArray,
+                dislikes: nbDislikes,
                 _id: req.params.id
             })
                 .then(likedsauce => res.status(200).json(likedsauce))
@@ -30,17 +42,3 @@ exports.likeSauce = (req, res, next) => {
         })
         .catch(error => res.status(400).json({error}));
 };
-
-/*
-if(req.body.like == 1){
-    usersLiked.push(userId)
-}
-if(req.body.like == -1){
-    usersDisliked.push(userId)
-}
-if(req.body.like == 0){
-    usersDisliked.pop(userId);
-    usersDisliked.pop(userId)
-}
-likes = length(usersLiked);
-dislikes = length(usersDisliked);*/
