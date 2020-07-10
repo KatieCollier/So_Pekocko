@@ -1,4 +1,6 @@
-const mongoose = require("mongoose");
+/* ### Create a schema (model) for sauces ### */
+
+const mongoose = require("mongoose"); /* import "mongoose" package - allows use to create a strict schema with the requires fields and their type */
 
 const sauceSchema = mongoose.Schema({
     userId: {type: String, required: true},
@@ -14,4 +16,4 @@ const sauceSchema = mongoose.Schema({
     usersDisliked: {type: [String], required: true},
 });
 
-module.exports = mongoose.model("Sauce", sauceSchema);
+module.exports = mongoose.model("Sauce", sauceSchema); /* exports the sauces model */
