@@ -48,4 +48,4 @@ server.on('listening', () => {
   console.log('Listening on ' + bind);
 });
 
-server.listen(port); /* the server is listening to "port", defined L18 using the function normalizePort*/
+server.listen(port); /* the server is listening to "port", defined using the function normalizePort*/
