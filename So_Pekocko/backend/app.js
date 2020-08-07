@@ -1,6 +1,7 @@
 /* ### Create an "express" application ### */
 
 const express = require("express"); /* imports the express package = framework to make creating a server easier*/
+const dotenv = require("dotenv").config()
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -10,7 +11,7 @@ const sauceRoutes = require("./routes/sauce");/* import the sauces routers and s
 const likesRoutes = require("./routes/likes");/* import the likes router and store them in a "likesRoutes" object */
 
 /* connect application to MongoDB database */
-mongoose.connect('mongodb+srv://Katie:SpicyChillis@cluster0.1uh07.mongodb.net/<dbname>?retryWrites=true&w=majority',
+mongoose.connect(process.env.MONGOaccess,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))

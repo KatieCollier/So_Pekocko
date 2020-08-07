@@ -19,4 +19,6 @@ Technologies utilisées:
 2.b) Installez nodemon ("nodemon install")
 2.c) Tapez "nodemon server" - "listening on port 300" et "connexion à MongoDB réussie!" apparaitront dans le terminal
 
-3) Ouvrez `http://localhost:4200/` dans votre navigateur
+3) For security reasons, the user name and password to the database are kept in a .env file that is in .gitignore. In order for the application to work, you will need to create a file named .env and enter the correct credentials following the example of .env-example. For OpenClassrooms these are contained in the file P6_02_DBcredentials
+
+4) Ouvrez `http://localhost:4200/` dans votre navigateur
