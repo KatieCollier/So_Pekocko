@@ -19,6 +19,6 @@ Technologies utilisées:
 2.b) Installez nodemon ("nodemon install")
 2.c) Tapez "nodemon server" - "listening on port 300" et "connexion à MongoDB réussie!" apparaitront dans le terminal
 
-3) For security reasons, the user name and password to the database are kept in a .env file that is in .gitignore. In order for the application to work, you will need to create a file named .env and enter the correct credentials following the example of .env-example. For OpenClassrooms these are contained in the file P6_02_DBcredentials
+3. Pour des raison de sécurité, le nom d'utilisateur et le mot de passe de la base de données sont stockés dans un fichier .env, lui-même dans .gitignore. Pour faire fonctionner l'application, vous aurez besoin de créer un fichier nommé .env en suivant l'exemple de .env-example et d'y insérer les identifiants correctes. Pour OpenClassrooms, ceux-ci peuvent être trouvés dans le fichier P6_02_DBcredentials.
 
-4) Ouvrez `http://localhost:4200/` dans votre navigateur
+4. Ouvrez `http://localhost:4200/` dans votre navigateur
